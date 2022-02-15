@@ -1,17 +1,24 @@
-function EmployeeDetails() {
-    var name= "Shaifali";
-    var age = 20;
-    var designation = "SDE";
-    
-    return {
-      name: name,
-      age: age,
-      designation: designation
+function Employee() {
+  
+  var EmpName= "Shaifali";
+  var EmpAge = 20;
+  var EmpDesignation = "SDE Intern";
+  
+  return {
+    getName : function() {
+        return EmpName;
+    },
+    getAge : function() {
+        return EmpAge;
+    },
+    getDesignation : function() {
+        return EmpDesignation;
     }
-  }
-  
-  var newEmployee = EmployeeDetails()
-  
-  var userName = newEmployee.name;
-  var userAge = newEmployee.age;
-  var userDesignation = newEmployee.designation;
+    }
+}
+
+var emp= Employee()
+
+console.log(emp.getName());
+console.log(emp.getAge());
+console.log(emp.getDesignation());
