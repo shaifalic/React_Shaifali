@@ -9,7 +9,7 @@ function EmployeeDetails() {
       designation: designation
     }
   }
-  var x;
+  
   var newEmployee = EmployeeDetails()
   
   var userName = newEmployee.name;
