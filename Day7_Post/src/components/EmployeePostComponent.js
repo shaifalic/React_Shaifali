@@ -6,10 +6,10 @@ export default class EmployeePostComponent extends React.Component {
         super();
         this.state = {
             employeeList: [],
-            Empid:'',
-            EmpName:'',
-            EmpDesignation:'',
-            EmpSalary:''
+            eid:0,
+            ename:'',
+            designation:'',
+            salary:0
         }
     }
     debugger;
@@ -19,12 +19,16 @@ export default class EmployeePostComponent extends React.Component {
 
     addEmployee = (event) => {
         debugger;
-        
-        const data1={Eid:this.state.Empid, Ename:this.state.EmpName,Designation:this.state.EmpDesignation,Salary:this.state.EmpSalary};
-        alert(data1.Eid);
-        Axios.post("https://localhost:5001/api/Employee",data1).then(response => {
-            console.log(response)
-            alert("hujk");
+        event.preventDefault();
+        let postdata={
+            eid:parseInt(this.state.eid,10),
+            ename:this.state.ename,
+            designation:this.state.designation,
+            salary:parseInt(this.state.salary,10)
+        }
+        alert(this.state.ename);
+        Axios.post("https://localhost:5001/api/Employee",postdata).then((response) => {
+            alert("worked");
             this.getData();
         })
     }
@@ -36,13 +40,13 @@ export default class EmployeePostComponent extends React.Component {
                 <div>
                     <form onSubmit={this.addEmployee}>
                         <label>Empid: </label>
-                        <input type="number"  name="Empid" onChange={this.changeHandler} /><br></br>
+                        <input type="number" name="eid" onChange={this.changeHandler} /><br></br>
                         <label>EmpName: </label>
-                        <input type="text"  name="EmpName" onChange={this.changeHandler} /><br></br>
+                        <input type="text" name="ename" onChange={this.changeHandler} /><br></br>
                         <label>EmpDesignation: </label>
-                        <input type="text"  name="EmpDesignation" onChange={this.changeHandler} /><br></br>
+                        <input type="text" name="designation" onChange={this.changeHandler} /><br></br>
                         <label>EmpSalary: </label>
-                        <input type="number"  name="EmpSalary" onChange={this.changeHandler} /><br></br><br></br>
+                        <input type="number" name="salary" onChange={this.changeHandler} /><br></br><br></br>
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
@@ -50,8 +54,6 @@ export default class EmployeePostComponent extends React.Component {
         )
     }
 
-    
-    
     getData = () => {
         var dataPromise = Axios.get("https://localhost:5001/api/Employee");
         dataPromise.then((response) => {

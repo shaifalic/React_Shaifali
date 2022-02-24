@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from "axios"
+import Axios from "axios";
 import EmployeeDetailsComponent from "./EmployeeDetailsComponent"
 
 export default class EmployeeApiComponent extends React.Component {
